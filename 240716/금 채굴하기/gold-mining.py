@@ -20,7 +20,7 @@ max_gold = 0
 
 for i in range(N):
     for j in range(N):
-        for k in range(N//2+1):
+        for k in range(N):
             gold, cost = gold_n_cost((i, j), k, field)
             max_gold = max((max_gold, gold))if (M*gold - cost)>= 0 else max_gold
 
