@@ -2,7 +2,7 @@ import sys
 
 N, M = map(int, sys.stdin.readline().split()) # N 세로 M 가로
 field = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
-field_plus = [[1 if var >= 0 else 0  for var in line] for line in field]
+field_plus = [[1 if var > 0 else 0  for var in line] for line in field]
 
 dots = []
 
