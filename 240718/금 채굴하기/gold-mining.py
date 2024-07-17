@@ -8,11 +8,10 @@ def gold_n_cost(dot, K, f):
     dots_square = [(x+i, y+j) for i in range(-K, K+1) for j in range(-K+abs(i), K-abs(i)+1)]
     
     ans = 0
-    cost = 0
+    cost = len(dots_square)
     for (i, j) in dots_square:
         if 0 <= i <= N-1 and 0 <= j <= N-1:
             ans += f[i][j]
-            cost += 1
             
     return ans, cost
 
