@@ -12,7 +12,7 @@ for i in range(N-1):
             for l in range(k+1, M):
                 dots.append((i,j,k,l))
 
-ans = 0
+ans = -1
 for t, b, l, r in dots:
     field_plus_sum = sum([sum(line[l:r+1]) for line in field_plus[t:b+1]])
     if field_plus_sum == ((b-t+1)*(r-l+1)):
