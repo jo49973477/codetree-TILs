@@ -18,7 +18,7 @@ while True:
 
 
     
-    if rotate > 0 and rotate == 4 and (T > 0 and x == initial_x and y == initial_y):
+    if rotate > 0 and rotate % 4 == 0 and T > 0 and x == initial_x and y == initial_y:
         T = -1
         break
     elif 0 <= x <= N-1 and 0 <= y <= N-1:
@@ -26,12 +26,11 @@ while True:
             idx = idx - 1 if idx != 0 else 3 #방향틀기
             rotate += 1
         elif field[y+by][x+bx] == '.': #아래에 바닥없으면
-            rotate += 1
+            rotate += 0
             idx = (idx+1)%4 #또 방향틀기
             x, y = x+bx, y+by #방향틀어서 전진
             T += 1
         elif field[y+by][x+bx] == '#': #아래에 바닥이 있다?
-            rotate = 0
             x, y = x+dx, y+dy
             T += 1 #전진!
     else:
