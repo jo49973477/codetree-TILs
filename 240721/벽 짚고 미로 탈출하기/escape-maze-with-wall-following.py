@@ -1,7 +1,7 @@
 import sys
 
 N = int(sys.stdin.readline())
-x, y = map(int, sys.stdin.readline().split())
+y, x = map(int, sys.stdin.readline().split())
 field = [sys.stdin.readline().strip() for _ in range(N)]
 
 
@@ -14,7 +14,7 @@ T = 0
 while True:
     dx, dy = dxs[idx], dys[idx] #앞으로갈길
     bx, by = dxs[(idx+1)%4], dys[(idx+1)%4] #바닥위치
-    
+
     if T > 0 and x == initial_x and y == initial_y:
         T = -1
         break
