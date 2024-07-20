@@ -26,7 +26,7 @@ while True:
             idx = idx - 1 if idx != 0 else 3 #방향틀기
             rotate += 1
         elif field[y+by][x+bx] == '.': #아래에 바닥없으면
-            rotate = 0
+            rotate += 1
             idx = (idx+1)%4 #또 방향틀기
             x, y = x+bx, y+by #방향틀어서 전진
             T += 1
