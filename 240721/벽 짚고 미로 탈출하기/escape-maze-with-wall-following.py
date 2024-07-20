@@ -18,7 +18,7 @@ while True:
 
 
     
-    if rotate == 4 or (T > 0 and x == initial_x and y == initial_y):
+    if rotate > 0 and rotate == 4 and (T > 0 and x == initial_x and y == initial_y):
         T = -1
         break
     elif 0 <= x <= N-1 and 0 <= y <= N-1:
