@@ -22,50 +22,34 @@ end = False
 field = [[0 for _ in range(N)] for _ in range(N)]
 for y, x in apples:
     field[y-1][x-1] = 'A'
+    
+field[head_y][head_x] = orders[0][0]
 
 for dir, num in orders:
     num = int(num)
     
     for _ in range(num):
-        if T < 2:
-            dx, dy = dir_dic[dir]
-            if in_range((head_x+dx, head_y+dy)):
-                if field[head_y+dy][head_x+dx] in dir_dic:
-                    T += 1
-                    end=True
-                    break
-                else:
-                    field[head_y][head_x] = dir
-                    field[head_y+dy][head_x+dx] = dir
-                    head_x, head_y = head_x+dx, head_y+dy
-                    T += 1
-                    now_snake_len += 1
-            else:
-                T += 1
-                end = True
-                break
-        
-        else:
-            dx, dy = dir_dic[dir]
-            if in_range((head_x+dx, head_y+dy)):
-                if field[head_y+dy][head_x+dx] != 'A':
-                    tdx, tdy = dir_dic[field[tail_y][tail_x]]
-                    field[tail_y][tail_x] = 0
-                    tail_x, tail_y = tail_x + tdx, tail_y+tdy
-                T += 1
+        dx, dy = dir_dic[dir]
+        if in_range((head_x+dx, head_y+dy)):
+            field[head_y][head_x] = dir
+            
+            if field[head_y+dy][head_x+dx] != 'A':
                 
-                if field[head_y+dy][head_x+dx] in dir_dic:
-                    end=True
-                    break
-                        
-                field[head_y][head_x] = dir
-                field[head_y+dy][head_x+dx] = dir
-                head_x, head_y = head_x+dx, head_y+dy
-            else:
-                T += 1
-                end = True
+                tdx, tdy = dir_dic[field[tail_y][tail_x]]
+                field[tail_y][tail_x] = 0
+                tail_x, tail_y = tail_x + tdx, tail_y+tdy
+            T += 1
+                
+            if field[head_y+dy][head_x+dx] in dir_dic:
+                end=True
                 break
-        
+            
+            field[head_y+dy][head_x+dx] = dir
+            head_x, head_y = head_x+dx, head_y+dy
+        else:
+            T += 1
+            end = True
+            break
         
     
     if end:
