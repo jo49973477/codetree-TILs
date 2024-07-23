@@ -48,24 +48,24 @@ for dir, num in orders:
         else:
             dx, dy = dir_dic[dir]
             if in_range((head_x+dx, head_y+dy)):
+                if field[head_y+dy][head_x+dx] != 'A':
+                    tdx, tdy = dir_dic[field[tail_y][tail_x]]
+                    field[tail_y][tail_x] = 0
+                    tail_x, tail_y = tail_x + tdx, tail_y+tdy
+                T += 1
+                
                 if field[head_y+dy][head_x+dx] in dir_dic:
-                    T += 1
                     end=True
                     break
-                else:
-                    if field[head_y+dy][head_x+dx] != 'A':
-                        tdx, tdy = dir_dic[field[tail_y][tail_x]]
-                        field[tail_y][tail_x] = 0
-                        tail_x, tail_y = tail_x + tdx, tail_y+tdy
                         
-                    field[head_y][head_x] = dir
-                    field[head_y+dy][head_x+dx] = dir
-                    head_x, head_y = head_x+dx, head_y+dy
-                    T += 1
+                field[head_y][head_x] = dir
+                field[head_y+dy][head_x+dx] = dir
+                head_x, head_y = head_x+dx, head_y+dy
             else:
                 T += 1
                 end = True
                 break
+        
         
     
     if end:
