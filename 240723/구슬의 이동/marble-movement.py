@@ -9,20 +9,24 @@ def move(r, c, dir, v):#미1친 새끼들아 인간승리다 내가 이거 O(1)�
         clps = (v+r) // (N-1)
         r = v+r if clps % 2 == 0 else -v-r+2*(N-1)*clps
         r %= (N-1)*2
+        dir = 'D' if clps % 2 == 0 else 'U'
     elif dir == 'R':
         clps = (v+c) // (N-1)
         c = v+c if clps % 2 == 0 else -v-c+2*(N-1)*clps
         c %= (N-1)*2
+        dir = 'R' if clps % 2 == 0 else 'L'
     elif dir == 'L':
         clps = (v-c+N-1) // (N-1)
         c = -v+c+2*(N-1)*clps if clps % 2 == 0 else v-c
         c %= (N-1)*2
+        dir = 'L' if clps % 2 == 0 else 'R'
     elif dir == 'U':
         clps = (v-r+N-1) // (N-1)
         r = r-v+2*(N-1)*clps if clps % 2 == 0 else -r+v
         r %= (N-1)*2
+        dir = 'U' if clps % 2 == 0 else 'D'
         
-    return r, c
+    return r, c, dir, v
         
 count = [[0 for _ in range(N)] for _ in range(N)]
 for r, c, _, _ in marvels:
@@ -33,9 +37,8 @@ for _ in range(T):
     new_marvels = []
     
     for i, (r, c, d, v) in enumerate(marvels):
-        new_r, new_c = move(r,c,d,v)
-        marvels[i][0] = new_r
-        marvels[i][1] = new_c
+        new_r, new_c, new_d, new_v = move(r,c,d,v)
+        marvels[i] = [new_r, new_c, new_d, new_v]
         new_count[new_r][new_c] += 1
     
     assholes_dic = {}
@@ -59,5 +62,6 @@ for _ in range(T):
     
     count = new_count
     marvels = new_marvels
+    
 
 print(sum([sum(l) for l in count]))
