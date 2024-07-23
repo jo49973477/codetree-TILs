@@ -23,7 +23,8 @@ field = [[0 for _ in range(N)] for _ in range(N)]
 for y, x in apples:
     field[y-1][x-1] = 'A'
     
-field[head_y][head_x] = orders[0][0]
+if orders:
+    field[head_y][head_x] = orders[0][0]
 
 for dir, num in orders:
     num = int(num)
