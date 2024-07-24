@@ -9,7 +9,7 @@ def backtrack(put_len, result):
         global ans
         ans += 1
     else:
-        for num in range(1, put_len+1):
+        for num in range(1, min((4, put_len))+1):
             new_result = result + (str(num) * num)
             backtrack(put_len - num, new_result)
 
