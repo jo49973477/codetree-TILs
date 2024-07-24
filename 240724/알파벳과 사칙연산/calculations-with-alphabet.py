@@ -8,7 +8,7 @@ for i in range(len(st)//2 + 1):
 
 M = len(variables)
 
-ans = 0
+ans =  - sys.maxsize
 
 def backtrack(depth, l):
     if depth == M:
