@@ -22,5 +22,5 @@ N = int(sys.stdin.readline())
 lines = [tuple(map(int, sys.stdin.readline().split())) for _ in range(N)]
 lines.sort(key= lambda x: x[0])
 
-backtrack(lines, 1, lines[0][0])
+backtrack(lines, 0, 0)
 print(ans)
