@@ -1,4 +1,5 @@
 import sys
+import copy
 
 N, M, K = map(int, sys.stdin.readline().split()) # K개 말, M개 판
 yut_list = list(map(int, sys.stdin.readline().split())) # N개 윷
@@ -15,9 +16,9 @@ def backtrack(depth, pos_list):
             if pos_list[mal] >= M:
                 continue
             else:
-                pos_list[mal] += yut_list[depth]
-                backtrack(depth+1, pos_list)
-                pos_list[mal] -= yut_list[depth]
+                new_pos_list = copy.deepcopy(pos_list)
+                new_pos_list[mal] += yut_list[depth]
+                backtrack(depth+1, new_pos_list)
                 
 
 backtrack(0, [1 for _ in range(K)])
