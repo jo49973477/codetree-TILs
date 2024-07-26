@@ -13,7 +13,7 @@ def choose(depth, part_list, last_idx):
         min_sub = min((abs(set1-set2), min_sub))
         return
     
-    for idx in range(last_idx + 1, N+1):
+    for idx in range(last_idx + 1, 2*N):
         part_list[depth] = num_list[idx]
         choose(depth + 1, part_list, idx)
 
