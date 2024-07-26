@@ -22,7 +22,7 @@ def makearray(sen, N, startpoint):
     if next_candidates:
         makearray(sen+str(next_candidates[0]), N, 4)
     else:
-        makearray(sen[:-1], N, startpoint + 1)
+        makearray(sen[:-max_conlen], N, startpoint + 1)
             
 N = int(sys.stdin.readline())
 makearray('4', N, 4)
