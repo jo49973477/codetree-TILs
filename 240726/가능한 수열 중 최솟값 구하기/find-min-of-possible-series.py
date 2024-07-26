@@ -1,4 +1,6 @@
 import sys
+limit_number = 1000000
+sys.setrecursionlimit(limit_number)
 
 
 def makearray(sen, N, startpoint):
