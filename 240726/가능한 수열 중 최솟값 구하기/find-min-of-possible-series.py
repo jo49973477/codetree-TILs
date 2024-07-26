@@ -1,5 +1,5 @@
 import sys
-limit_number = 1000000
+limit_number = 15000
 sys.setrecursionlimit(limit_number)
 
 
