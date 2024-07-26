@@ -1,5 +1,5 @@
 import sys
-limit_number = 15000
+limit_number = 100
 sys.setrecursionlimit(limit_number)
 
 
@@ -20,11 +20,12 @@ def makearray(sen, N, startpoint):
                 last2 = sen[(len(sen)-2*conlen+1):(len(sen)-conlen+1)]
                 if last1 + str(can) == last2:
                     next_candidates.remove(can)
+    # print(sen, startpoint)
     
     if next_candidates:
         makearray(sen+str(next_candidates[0]), N, 4)
     else:
-        makearray(sen[:-1], N, startpoint + 1)
+        makearray(sen[:-1], N, int(sen[-1]) + 1)
             
 N = int(sys.stdin.readline())
 makearray('4', N, 4)
