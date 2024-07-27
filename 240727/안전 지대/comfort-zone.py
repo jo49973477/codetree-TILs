@@ -19,7 +19,7 @@ def areacount(dot):
 
 max_height = max([max(l) for l in field])
 
-ans_K, ans_areas = 0, 0
+ans_K, ans_areas = 0, -1
 for K in range(1, max_height):
     visited = [[field[i][j] <= K for j in range(M)] for i in range(N)]
     
