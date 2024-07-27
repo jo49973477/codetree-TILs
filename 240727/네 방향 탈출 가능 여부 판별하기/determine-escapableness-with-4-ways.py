@@ -16,12 +16,12 @@ q.append((0,0))
 while q:
     y, x = q.popleft()
     
-    if y == N-1 and x == N-1:
+    if y == N-1 and x == M-1:
         ans = 1
         break
     
     for dy, dx in zip(dys, dxs):
-        if 0 <= y+dy <= N-1 and 0 <= x+dx <= N-1 and not visited[y+dy][x+dx]:
+        if 0 <= y+dy <= N-1 and 0 <= x+dx <= M-1 and not visited[y+dy][x+dx]:
             q.append((y+dy, x+dx))
             visited[y+dy][x+dx] = True
 
