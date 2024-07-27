@@ -33,5 +33,6 @@ for K in range(1, max_height):
     
     if areas_now > ans_areas:
         ans_K, ans_areas = K, areas_now
+        print(K)
 
 print(ans_K, ans_areas)
