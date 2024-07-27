@@ -1,4 +1,7 @@
 import sys
+sys.setrecursionlimit(10000)
+
+
 
 N, M = map(int, sys.stdin.readline().split()) #가로 M 세로 N
 field = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
