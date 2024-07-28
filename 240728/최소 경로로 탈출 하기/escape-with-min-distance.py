@@ -1,7 +1,7 @@
 import sys
 from collections import deque
 
-M, N = map(int, sys.stdin.readline().split())
+N, M = map(int, sys.stdin.readline().split())
 field = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
 
 visited = [[field[i][j] == 0 for j in range(M)] for i in range(N)]
