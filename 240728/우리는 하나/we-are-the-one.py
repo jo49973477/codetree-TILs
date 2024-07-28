@@ -28,8 +28,8 @@ for dots in combinations(all_dots, K):
         
         for dy, dx in zip(dys, dxs):
             if 0 <= y+dy <= N-1 and 0 <= x+dx <= N-1 and not visited[y+dy][x+dx]:
-                visited[y+dy][x+dx] = True
                 if u <= abs(field[y+dy][x+dx]-field[y][x]) <= d:
+                    visited[y+dy][x+dx] = True
                     q.append((y+dy, x+dx))
     
     ans = max((ans, cities))
