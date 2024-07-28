@@ -14,10 +14,12 @@ visited[r_st][c_st] = 1
 q = deque()
 q.append((r_st, c_st))
 
+ans = -1
 while q:
     y, x = q.popleft()
     
     if (y,x) == (r_end, c_end):
+        ans = step[r_end][c_end]
         break
     
     for dy, dx in zip(dys, dxs):
@@ -26,4 +28,4 @@ while q:
             visited[y+dy][x+dx] = True
             q.append((y+dy, x+dx))
             
-print(step[r_end][c_end] if step[r_end][c_end] != 0 else -1)
+print(ans)
