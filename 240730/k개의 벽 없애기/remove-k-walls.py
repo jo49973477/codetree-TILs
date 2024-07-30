@@ -14,7 +14,6 @@ q = deque()
 q.append((r1, c1))
 
 visited = [[False for j in range(N)] for i in range(N)]
-visited[r1][c1] = True
 step = [[0 for _ in range(N)] for _ in range(N)]
 wall_step = [[0 for _ in range(N)] for _ in range(N)]
 
@@ -22,7 +21,7 @@ ans = -1
 
 while q:
     y, x = q.popleft()
-
+    
     if (y, x) == (r2, c2):
         ans = step[y][x]
         break
@@ -30,23 +29,16 @@ while q:
     if wall_step[y][x] > K:
         continue
         
-    all_wall = True
-    
+        
     for dy, dx in zip(dys, dxs):
-        if 0 <= y+dy <= N-1 and 0 <= x+dx <= N-1 and not visited[y+dy][x+dx] and field[y+dy][x+dx] == 0:
-            if field[y+dy][x+dx] == 0:
-                all_wall = False
-                visited[y+dy][x+dx] = True
-                step[y+dy][x+dx] = step[y][x] + 1
-                wall_step[y+dy][x+dx] = wall_step[y][x]
-                q.append((y+dy, x+dx))
-    
-    if all_wall:
-        for dy, dx in zip(dys, dxs):
-            if 0 <= y+dy <= N-1 and 0 <= x+dx <= N-1 and not visited[y+dy][x+dx] and field[y+dy][x+dx] == 1:
-                visited[y+dy][x+dx] = True
-                step[y+dy][x+dx] = step[y][x] + 1
+        if 0 <= y+dy <= N-1 and 0 <= x+dx <= N-1 and not visited[y+dy][x+dx]:
+            visited[y+dy][x+dx] = True
+            step[y+dy][x+dx] = step[y][x] + 1
+            q.append((y+dy, x+dx))
+            
+            if field[y+dy][x+dx] == 1:
                 wall_step[y+dy][x+dx] = wall_step[y][x] + 1
-                q.append((y+dy, x+dx))
+            else:
+                wall_step[y+dy][x+dx] = wall_step[y][x]
 
 print(ans)
