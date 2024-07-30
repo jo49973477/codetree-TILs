@@ -21,6 +21,7 @@ ans = -1
 
 while q:
     y, x, walls = q.popleft()
+    visited[y][x] = True
     
     if (y, x) == (r2, c2):
         ans = step[y][x]
@@ -32,12 +33,9 @@ while q:
         
     for dy, dx in zip(dys, dxs):
         if 0 <= y+dy <= N-1 and 0 <= x+dx <= N-1 and not visited[y+dy][x+dx]:
-            visited[y+dy][x+dx] = True
             step[y+dy][x+dx] = step[y][x] + 1
-            
             next_wall = walls + 1 if field[y+dy][x+dx] == 1 else walls
-                
             
-            q.append((y+dy, x+dx, walls))
+            q.append((y+dy, x+dx, next_wall))
 
 print(ans)
