@@ -1,5 +1,6 @@
 import sys
 from collections import deque
+from itertools import combinations
 
 N, K = map(int, sys.stdin.readline().split())
 field = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
@@ -10,32 +11,41 @@ r1, c1, r2, c2 = r1-1, c1-1, r2-1, c2-1
 dys = [0, 0, -1, 1]
 dxs = [1, -1, 0, 0]
 
-q = deque()
-q.append((r1, c1, 0))
+ans = sys.maxsize
 
-visited = [[False for j in range(N)] for i in range(N)]
-visited[r1][c1] = True
-step = [[0 for _ in range(N)] for _ in range(N)]
-
-ans = -1
-
-while q:
-    y, x, walls = q.popleft()
-    visited[y][x] = True
-    
-    if (y, x) == (r2, c2):
-        ans = step[y][x]
-        break
-        
-    if walls > K:
-        continue
-        
-        
-    for dy, dx in zip(dys, dxs):
-        if 0 <= y+dy <= N-1 and 0 <= x+dx <= N-1 and not visited[y+dy][x+dx]:
-            step[y+dy][x+dx] = step[y][x] + 1
-            next_wall = walls + 1 if field[y+dy][x+dx] == 1 else walls
+wall_list = []
+for i in range(N):
+    for j in range(N):
+        if field[i][j] == 1:
+            wall_list.append((i,j))
             
-            q.append((y+dy, x+dx, next_wall))
+ans_candidates = []
 
-print(ans)
+for brokens in combinations(wall_list, K):
+    for i, j in brokens:
+        field[i][j] = 0
+    
+    visited = [[field[i][j] == 1 for j in range(N)] for i in range(N)]
+    step = [[0 for _ in range(N)] for _ in range(N)]
+    
+    q = deque()
+    q.append((r1, c1))
+    
+    while q:
+        y, x = q.popleft()
+        
+        if (y, x) == (r2, c2):
+            ans_candidates.append(step[y][x])
+            break
+        
+        for dy, dx in zip(dys, dxs):
+            if 0 <= y+dy <= N-1 and 0 <= x+dx <= N-1 and not visited[y+dy][x+dx]:
+                step[y+dy][x+dx] = step[y][x] + 1
+                visited[y+dy][x+dx] = True
+                q.append((y+dy, x+dx))
+            
+    
+    for i, j in brokens:
+        field[i][j] = 1
+
+print(min(ans_candidates) if ans_candidates else -1)
