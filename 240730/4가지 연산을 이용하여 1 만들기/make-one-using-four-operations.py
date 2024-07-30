@@ -7,6 +7,7 @@ q = deque()
 q.append((N, 0))
 
 ans = 0
+already = set()
 
 while q:
     num, times = q.popleft()
@@ -22,6 +23,8 @@ while q:
         arr.append(num//3)
     
     for asshole in arr:
-        q.append((asshole, times + 1))
+        if asshole not in already:
+            q.append((asshole, times+1))
+            already.add(asshole)
         
 print(ans)
