@@ -25,8 +25,6 @@ while q:
         ans = step[y][x]
         break
         
-    if walls > K:
-        continue
         
         
     for dy, dx in zip(dys, dxs):
@@ -36,7 +34,8 @@ while q:
             
             if field[y+dy][x+dx] == 1:
                 walls += 1
-            
-            q.append((y+dy, x+dx, walls))
+                
+            if walls <= K:
+                q.append((y+dy, x+dx, walls))
 
 print(ans)
