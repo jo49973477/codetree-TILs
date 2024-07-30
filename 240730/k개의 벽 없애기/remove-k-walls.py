@@ -21,8 +21,6 @@ ans = -1
 
 while q:
     y, x, walls = q.popleft()
-    print(q)
-    print(step)
     
     if (y, x) == (r2, c2):
         ans = step[y][x]
