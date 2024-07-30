@@ -38,7 +38,7 @@ while q:
                 all_wall = False
                 visited[y+dy][x+dx] = True
                 step[y+dy][x+dx] = step[y][x] + 1
-                wall_step[y+dy][x+dx] = wall_step[y+dy][x+dx]
+                wall_step[y+dy][x+dx] = wall_step[y][x]
                 q.append((y+dy, x+dx))
     
     if all_wall:
@@ -46,8 +46,7 @@ while q:
             if 0 <= y+dy <= N-1 and 0 <= x+dx <= N-1 and not visited[y+dy][x+dx] and field[y+dy][x+dx] == 1:
                 visited[y+dy][x+dx] = True
                 step[y+dy][x+dx] = step[y][x] + 1
-                wall_step[y+dy][x+dx] = wall_step[y+dy][x+dx] + 1
+                wall_step[y+dy][x+dx] = wall_step[y][x] + 1
                 q.append((y+dy, x+dx))
-
 
 print(ans)
