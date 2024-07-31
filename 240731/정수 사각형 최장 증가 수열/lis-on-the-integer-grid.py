@@ -4,8 +4,8 @@ N = int(sys.stdin.readline())
 field = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
 step = [[1 for _ in range(N)] for _ in range(N)]
 
-dys = [0, 0, -1, 1]
-dxs = [1, -1, 0, 0]
+dys = [ 0, -1, 0, 1]
+dxs = [-1, 0, 1, 0]
 
 for x in range(N):
     for y in range(N):
