@@ -25,4 +25,4 @@ for i in range(N):
             max_field[i][j] = max((max_val, max_field[i][j]))
             min_field[i][j] = min((min_val, min_field[i][j]))
 
-print(abs(min_field[i][j]-max_field[i][j]))
+print(abs(min_field[N-1][N-1]-max_field[N-1][N-1]))
