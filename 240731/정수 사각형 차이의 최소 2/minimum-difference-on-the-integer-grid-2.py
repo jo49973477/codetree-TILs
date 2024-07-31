@@ -20,9 +20,11 @@ for i in range(N):
             max_val, min_val = 0, 0
             max1, min1,= max_field[i-1][j], min_field[i-1][j]
             max2, min2 = max_field[i][j-1], min_field[i][j-1]
-            max_val = max2 if abs(max1-min1) > abs(max2-min2) else max1
-            min_val = min2 if abs(max1-min1) > abs(max2-min2) else min1
+            max_val = max2 if abs(max1-min1) >= abs(max2-min2) else max1
+            min_val = min2 if abs(max1-min1) >= abs(max2-min2) else min1
             max_field[i][j] = max((max_val, max_field[i][j]))
             min_field[i][j] = min((min_val, min_field[i][j]))
 
+print(max_field)
+print(min_field)
 print(abs(min_field[i][j]-max_field[i][j]))
