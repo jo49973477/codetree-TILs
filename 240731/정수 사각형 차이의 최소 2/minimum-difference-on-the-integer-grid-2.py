@@ -10,10 +10,10 @@ for i in range(N):
     for j in range(N):
         if i == 0 and j == 0:
             continue
-        if i == 0:
+        elif i == 0:
             max_field[i][j] = max((max_field[i][j], max_field[i][j-1]))
             min_field[i][j] = min((min_field[i][j], min_field[i][j-1]))
-        if j == 0:
+        elif j == 0:
             max_field[i][j] = max((max_field[i-1][j], max_field[i][j]))
             min_field[i][j] = min((min_field[i-1][j], min_field[i][j]))
         else:
@@ -24,8 +24,5 @@ for i in range(N):
             min_val = min2 if abs(max1-min1) > abs(max2-min2) else min1
             max_field[i][j] = max((max_val, max_field[i][j]))
             min_field[i][j] = min((min_val, min_field[i][j]))
-
-            print(min_field)
-            print(max_field)
 
 print(abs(min_field[i][j]-max_field[i][j]))
