@@ -1,4 +1,5 @@
 import sys
+sys.setrecursionlimit(250000)
 
 
 N = int(sys.stdin.readline())
@@ -23,12 +24,13 @@ def count(dot):
         if in_range(y+dy, x+dx) and field[y+dy][x+dx] > field[y][x]:
             ans = max((ans, 1+count((y+dy, x+dx))))
     dp[y][x] = ans
+
     return ans
 
-ans = 0
+
 for i in range(N):
     for j in range(N):
-        val = count((i,j))
-        ans = max((ans, val))
+        if dp[i][j] == -1:
+            count((i,j))
 
-print(ans)
+print(max([max(l) for l in dp]))
