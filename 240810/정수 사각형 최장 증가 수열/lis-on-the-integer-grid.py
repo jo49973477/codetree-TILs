@@ -1,5 +1,6 @@
 import sys
 
+
 N = int(sys.stdin.readline())
 field = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
 
@@ -20,7 +21,7 @@ def count(dot):
     ans = 1
     for dy, dx in zip(dys, dxs):
         if in_range(y+dy, x+dx) and field[y+dy][x+dx] > field[y][x]:
-            ans = max((ans, 1+count((y+dy, y+dx))))
+            ans = max((ans, 1+count((y+dy, x+dx))))
     dp[y][x] = ans
     return ans
 
