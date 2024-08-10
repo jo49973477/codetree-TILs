@@ -1,5 +1,5 @@
 import sys
-sys.setrecursionlimit(15000)
+sys.setrecursionlimit(30000)
 
 N = int(sys.stdin.readline())
 field = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
@@ -13,6 +13,7 @@ dys = [0, 0, -1, 1]
 dxs = [-1, 1, 0, 0]
 
 def count(dot):
+    print(dot)
     global dp
     y, x = dot
     
