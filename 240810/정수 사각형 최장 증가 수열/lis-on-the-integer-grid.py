@@ -1,5 +1,5 @@
 import sys
-
+sys.setrecursionlimit(10000)
 
 N = int(sys.stdin.readline())
 field = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
