@@ -13,7 +13,6 @@ dys = [0, 0, -1, 1]
 dxs = [-1, 1, 0, 0]
 
 def count(dot):
-    print(dot)
     global dp
     y, x = dot
     
